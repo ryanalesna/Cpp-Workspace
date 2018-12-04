@@ -38,8 +38,9 @@ public:
 		}
 			list[numOfElements - 1] = i;
 	}
-	T remove(int i, T x)
+	T remove(int i)
 	{
+		T x = list[i];
 		for (int j = i; j < numOfElements; j++)
 		{
 			list[j] = list[j + 1];
@@ -50,6 +51,10 @@ public:
 	T get(int i)
 	{
 		return list[i];
+	}
+	T* getPtr(int i)
+	{
+		return list + i;
 	}
 	int length()
 	{

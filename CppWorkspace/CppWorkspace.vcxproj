@@ -124,7 +124,9 @@
     <ClInclude Include="FizzBuzz.h">
       <FileType>CppCode</FileType>
     </ClInclude>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main.cpp">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
