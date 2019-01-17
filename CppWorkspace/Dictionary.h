@@ -9,7 +9,7 @@ class DictionaryPair
 private:
 	T m_value;
 	char* m_string = NULL;
-public: 
+public:
 	//default constructor
 	DictionaryPair() { }
 	//overloaded constructor
@@ -18,8 +18,9 @@ public:
 		const char* c = string.c_str();
 		int length = strlen(c);
 		m_string = new char[length + 1];
-		strcpy_s (m_string, length + 1, c);
+		strcpy_s(m_string, length + 1, c);
 		m_string[length] = 0;
+		m_value = value;
 	}
 	//gets value
 	T GetValue()
@@ -35,9 +36,9 @@ public:
 
 //Dictionary Class Template
 template<class T, unsigned int N = 59>
-class Dictionary
+class Dictionary 
 {
-private:
+public:
 	List<DictionaryPair<T>> m_buckets[N];
 	//finds the running hash of the string
 	unsigned int hash(const char* string)
@@ -62,9 +63,10 @@ private:
 	}
 
 	/* Returns pointer to pair if it exists, NULL otherwise */
-	DictionaryPair<T>* findPair(const char* string) 
+	DictionaryPair<T>* findPair(const char* string)
 	{
 		List<DictionaryPair<T>>* bucket = findBucket(string);
+		//printf("Found bucket at %p\n", bucket);
 		DictionaryPair<T>* result = NULL;
 		for (int i = 0; i < bucket->length(); i++)
 		{
@@ -81,7 +83,9 @@ public:
 	void add(std::string string, T key)
 	{
 		const char* c = string.c_str();
-		findBucket(c)->push(DictionaryPair<T>(string, key));
+		auto p = findBucket(c);
+		//printf("Found bucket at %p\n", p);
+		p->push(DictionaryPair<T>(string, key));
 	}
 	T lookup(std::string string)
 	{
@@ -94,7 +98,7 @@ public:
 		int index = 0;
 		DictionaryPair<T>* pair = findPair(c);
 		List<DictionaryPair<T>>* bucket = findBucket(c);
-		for (int i = 0; i < bucket->length(); i++) 
+		for (int i = 0; i < bucket->length(); i++)
 		{
 			if (bucket->getPtr(i) == pair)
 			{
@@ -121,6 +125,17 @@ public:
 		}
 		return exists;
 	}
+	void loopThrough()
+	{
+		for (int i = 0; i < N; i++)
+		{
+			printf("Length: %i", m_buckets[i].length());
+			for (int j = 0; j < m_buckets[i].length(); j++)
+			{
+				printf(" %i ", m_buckets[i][j].GetValue());
+			}
+			printf("\n");
+		}
+	}
 };
-
-#endif // DICTIONARY_H
+#endif

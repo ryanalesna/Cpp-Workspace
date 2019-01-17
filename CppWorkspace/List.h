@@ -83,7 +83,12 @@ public:
 			}
 		}
 		return foundIndex;
+		
+	}
 
+	T& operator[](int i)
+	{
+		return *getPtr(i);
 	}
 };
 template <class T>

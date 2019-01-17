@@ -18,11 +18,11 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Object_Factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Dictionary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -30,6 +30,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FizzBuzz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Object_Factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
