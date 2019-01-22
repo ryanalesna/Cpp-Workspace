@@ -1,0 +1,86 @@
+//Implement CreateVehicleByName Function using correct Dictionary 
+
+
+#ifndef OBJECT_FACTORY_H
+#define OBJECT_FACTORY_H
+#define LINK_CLASS_TO_NAME(Class, Name) SpecificVehicleFactory<Class> g_##Class##Factory(#Name);  
+
+#include "Dictionary.h"
+extern Dictionary<GenericVehicleFactory*> g_mVehicleFactories;
+class Vehicle;
+
+class GenericVehicleFactory
+{
+public:
+	GenericVehicleFactory::GenericVehicleFactory(const char* type)
+	{
+		object_Type = type;
+		g_mVehicleFactories.add(type, this)
+	}
+
+	virtual Vehicle* create(const char* type, const char* name)
+	{
+		return NULL;
+	}
+};
+
+template <class T>
+class SpecificVehicleFactory : GenericVehicleFactory
+{
+public: 
+	char* object_Type;
+
+	Vehicle* create(const char* type, const char* name)
+	
+		return new T(type, name);
+	}
+};
+
+class Vehicle
+{
+	Vehicle::Vehicle(const char* type, const char* name)
+	{
+		m_type = type;
+		m_name = name;
+	}
+private:
+	const char* m_type;
+	const char* m_name;
+public:
+	virtual void printNameOfVehicle()
+	{
+		printf(m_name);
+	}
+	void printTypeOfVehicle()
+	{
+		printf(m_type);
+	}
+};
+
+class Car : public Vehicle
+{
+
+};
+
+class SemiTruck : public Vehicle
+{
+
+};
+ Vehicle* createVehicleByName(const char* pszTypeName, const char* pszInstanceName)
+{
+	m_name = pszInstanceName;
+	if (pszTypeName == "car" || pszTypeName == "Car")
+	{
+		m_type = Car;
+	}
+	else
+	{
+		m_type = SemiTruck;
+
+	}
+
+}
+
+*/
+
+#endif
