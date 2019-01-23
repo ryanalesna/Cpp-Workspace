@@ -42,19 +42,19 @@ public:
 class Vehicle
 {
 	Vehicle() { };
-
+	void setType(const char* type)
+	{
+		type = m_type;
+	}
+	void setName(const char* name)
+	{
+		name = m_name;
+	}
 private:
 	const char* m_type;
 	const char* m_name;
 public:
-	const char* setType(const char* type)
-	{
-		type = m_type;
-	}
-	const char* setName(const char* name)
-	{
-		name = m_name;
-	}
+	
 	virtual void printNameOfVehicle()
 	{
 		printf(m_name);
@@ -67,7 +67,7 @@ public:
 
 class Car : public Vehicle
 { 
-	//Car() : Vehicle() {}
+	//Car(type, name) : Vehicle() { };
 
 };
 class SemiTruck : public Vehicle
