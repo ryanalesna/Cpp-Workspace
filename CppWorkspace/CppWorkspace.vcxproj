@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="Object_Factory.cpp" />
     <ClInclude Include="List.h">
       <FileType>CppCode</FileType>
@@ -128,6 +129,7 @@
     <ClCompile Include="main.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClInclude Include="Ptr.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object_Factory.h" />

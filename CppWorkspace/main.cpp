@@ -4,6 +4,20 @@
 #include "Windows.h"
 #include <stdio.h>
 #include <string>
+#include "Ptr.hpp"
+
+class foobar
+{
+public:
+	foobar() {
+		printf("Constructed\n");
+	}
+
+	~foobar()
+	{
+		printf("DESTROYED\n");
+	}
+};
 
 unsigned int hash(const char* string);
 int main() 
@@ -19,7 +33,7 @@ int main()
 	dict.add("hello", 0);
 	dict.lookup("hello");
 	dict.loopThrough();
-	system("pause");
+	
 
 	const int N = 59;
 	DictionaryPair<int> m_buckets[N];
@@ -27,9 +41,37 @@ int main()
 	hashCode = hashCode % N;
 	//m_buckets + hashCode;
 	*/
+	/*Vehicle* pCar = createVehicleByName("car", "Ryan's Car");
+	if (pCar)
+	{
+		printf("%s", pCar->getTypeOfVehicle().c_str());
+		printf("\n");
+		printf("%s", pCar->getNameOfVehicle().c_str());
+		printf("\n");
+	}
+	
+	Vehicle* pTruck = createVehicleByName("semi-truck", "Ryan's Truck");
+	if (pTruck)
+	{
+		
+		printf("%s", pTruck->getTypeOfVehicle().c_str());
+		printf("\n");
+		printf("%s", pTruck->getNameOfVehicle().c_str());
+		printf("\n");
+	}
+	*/
+
+	Ptr<foobar> p;
+	system("pause");
+	{
+		Ptr<foobar> pObject = new foobar;
+		system("pause");
+		p = pObject;
+		system("pause");
+	}
 
 
-	Vehicle* pcar = createVehicleByName(Car, "Ryan's Car");
+	system("pause");
 }
 unsigned int hash(const char* string)
 	{

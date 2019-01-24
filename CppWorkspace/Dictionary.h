@@ -16,7 +16,7 @@ public:
 	DictionaryPair(std::string string, T value)
 	{
 		const char* c = string.c_str();
-		int length = strlen(c);
+		int length = (int)strlen(c);
 		m_string = new char[length + 1];
 		strcpy_s(m_string, length + 1, c);
 		m_string[length] = 0;
@@ -39,6 +39,7 @@ template<class T, unsigned int N = 59>
 class Dictionary 
 {
 public:
+	int m_iSize;
 	List<DictionaryPair<T>> m_buckets[N];
 	//finds the running hash of the string
 	unsigned int hash(const char* string)
@@ -66,31 +67,40 @@ public:
 	DictionaryPair<T>* findPair(const char* string)
 	{
 		List<DictionaryPair<T>>* bucket = findBucket(string);
-		//printf("Found bucket at %p\n", bucket);
 		DictionaryPair<T>* result = NULL;
 		for (int i = 0; i < bucket->length(); i++)
 		{
+			//printf("searching for pair, checking %p", bucket->getPtr(i));
 			if (bucket->getPtr(i)->StringEquals(string))
 			{
 				result = bucket->getPtr(i);
 				break;
 			}
 		}
+
 		return result;
 	}
 public:
-	Dictionary() { }
+	Dictionary() { 
+		m_iSize = 0;
+	}
 	void add(std::string string, T key)
 	{
 		const char* c = string.c_str();
 		auto p = findBucket(c);
-		//printf("Found bucket at %p\n", p);
 		p->push(DictionaryPair<T>(string, key));
+		m_iSize++;
 	}
 	T lookup(std::string string)
 	{
 		const char* c = string.c_str();
-		return findPair(c)->GetValue();
+		auto pPair = findPair(c);
+		if (!pPair)
+		{
+			printf("Warning! \n");
+			system("pause");
+		}
+		return pPair->GetValue();
 	}
 	T remove(std::string string)
 	{
@@ -107,6 +117,7 @@ public:
 			}
 		}
 		T removed = bucket->remove(index).GetValue();
+		m_iSize--;
 		return removed;
 	}
 	bool contains(std::string string)
@@ -136,6 +147,10 @@ public:
 			}
 			printf("\n");
 		}
+	}
+	int size()
+	{
+		return m_iSize;
 	}
 };
 #endif
