@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="List.cpp" />
     <ClCompile Include="Object_Factory.cpp" />
+    <ClInclude Include="Assertions.h" />
     <ClInclude Include="List.h">
       <FileType>CppCode</FileType>
     </ClInclude>

@@ -1,6 +1,7 @@
 #ifndef LIST_H
 #define LIST_H
 #include <stdio.h>
+#include "Assertions.h"
 
 //add and remove method
 template <class T>
@@ -40,6 +41,7 @@ public:
 	}
 	T remove(int i)
 	{
+		ASSERT(numOfElements > 0, "numOfElements %i must be greater than 0.", numOfElements);
 		T x = list[i];
 		for (int j = i; j < numOfElements; j++)
 		{

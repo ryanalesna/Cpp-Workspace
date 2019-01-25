@@ -4,6 +4,7 @@
 #include "Windows.h"
 #include <stdio.h>
 #include <string>
+#include "Assertions.h"
 #include "Ptr.hpp"
 
 class foobar
@@ -60,18 +61,21 @@ int main()
 		printf("\n");
 	}
 	*/
-
-	Ptr<foobar> p;
-	system("pause");
+	
+	try {
+		List<int> list;
+		printf("%i", list.remove(0));
+	}
+	catch (Exception* e)
 	{
-		Ptr<foobar> pObject = new foobar;
-		system("pause");
-		p = pObject;
-		system("pause");
+		printf(e->getUnified().c_str());
+		delete e;
 	}
 
-
 	system("pause");
+
+
+
 }
 unsigned int hash(const char* string)
 	{
