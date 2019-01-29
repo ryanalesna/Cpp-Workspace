@@ -131,6 +131,7 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClInclude Include="Ptr.hpp" />
+    <ClInclude Include="TestingSuite.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object_Factory.h" />

@@ -1,5 +1,3 @@
-//Implement CreateVehicleByName Function using correct Dictionary 
-
 #ifndef OBJECT_FACTORY_H
 #define OBJECT_FACTORY_H
 #define LINK_CLASS_TO_NAME(Class, Name) SpecificVehicleFactory<Class> g_##Class##Factory(#Name);  

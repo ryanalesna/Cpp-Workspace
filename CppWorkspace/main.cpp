@@ -20,7 +20,13 @@ public:
 	}
 };
 
-unsigned int hash(const char* string);
+unsigned int hash(const char* string)
+
+void runTestPlans()
+{
+	
+}
+
 int main() 
 {
 	/*Dictionary<int> dict;
